@@ -1,0 +1,255 @@
+Yes — this is specifically for running Scala using **Apache Spark shell (`spark-shell`)** instead of normal Scala shell (`scala`).
+
+Your college practical is probably expecting this method because subject is **DSBDA with Apache Spark**.
+
+So follow THIS in lab.
+
+---
+
+# What Actually Happens Here?
+
+| Command               | Purpose                               |
+| --------------------- | ------------------------------------- |
+| `start-master.sh`     | Starts Spark master                   |
+| `spark-shell`         | Opens Scala + Spark interactive shell |
+| `:paste`              | Allows pasting multiline code         |
+| `Ctrl + D`            | Ends paste mode                       |
+| `EvenOddCheck.main()` | Runs your program                     |
+
+---
+
+# Exact Flow You Should Follow in Lab
+
+---
+
+# Step 1: Open Terminal
+
+Ctrl + Alt + T
+
+
+---
+
+# Step 2: Start Spark
+
+```bash
+source ~/.bashrc
+start-master.sh
+spark-shell
+```
+
+After this you will see something like:
+
+```scala>
+```
+
+or Spark welcome message.
+
+---
+
+# Step 3: Enter Paste Mode
+
+```scala
+:paste
+```
+
+Now terminal waits for multiline code.
+
+---
+
+# Step 4: Paste Code
+
+Example:
+
+```scala
+
+object EvenOddCheck {
+  def main(args: Array[String]): Unit = {
+
+    val number = 15
+
+    if (number % 2 == 0) {
+      println(s"$number is even")
+    }
+    else {
+      println(s"$number is odd")
+    }
+
+  }
+}
+```
+
+---
+
+# Step 5: Exit Paste Mode
+
+Press:
+
+```Ctrl + D
+```
+
+Then Spark compiles object.
+
+You will see:
+
+```defined object EvenOddCheck
+```
+
+---
+
+# Step 6: Run Program
+
+```
+EvenOddCheck.main(Array.empty[String])
+```
+
+Output:
+
+``
+15 is odd
+```
+
+---
+
+# Why They Use This Method?
+
+Because:
+
+* Spark shell supports Scala interactively.
+* Easier during practical.
+* No need to create `.scala` file separately.
+
+---
+
+# Simple Addition Program
+
+```
+:paste
+
+object Add {
+  def main(args: Array[String]): Unit = {
+
+    val a = 10
+    val b = 20
+
+    println("Addition = " + (a+b))
+
+  }
+}
+```
+
+Press:
+
+* Ctrl + D
+
+Run:
+
+```scala
+Add.main(Array.empty[String])
+```
+
+---
+
+# User Input Program
+
+```scala
+:paste
+
+import scala.io.StdIn
+
+object AddTwoNumbers {
+
+  def main(args: Array[String]): Unit = {
+
+    println("Enter first number:")
+    val num1 = StdIn.readInt()
+
+    println("Enter second number:")
+    val num2 = StdIn.readInt()
+
+    val sum = num1 + num2
+
+    println("Sum = " + sum)
+
+  }
+}
+```
+
+Press:
+
+* Ctrl + D
+
+Run:
+
+```scala
+AddTwoNumbers.main(Array.empty[String])
+```
+
+---
+
+# Important Viva Questions
+
+## What is spark-shell?
+
+Interactive Scala shell for Apache Spark.
+
+---
+
+## Why use :paste?
+
+To paste multiline Scala programs.
+
+---
+
+## Why Ctrl + D?
+
+Ends paste mode and compiles code.
+
+---
+
+## What is object in Scala?
+
+Container for methods and variables.
+
+---
+
+## What is main() method?
+
+Entry point of program execution.
+
+---
+
+## What is Array.empty[String]?
+
+Passes empty command-line arguments to main function.
+
+---
+
+# MOST IMPORTANT THING
+
+In your lab:
+
+You ONLY need to remember this flow:
+
+```bash
+spark-shell
+```
+
+then:
+
+```scala
+:paste
+```
+
+paste code
+
+then:
+
+* Ctrl + D
+
+then:
+
+```scala
+ObjectName.main(Array.empty[String])
+```
+
+DONE.
